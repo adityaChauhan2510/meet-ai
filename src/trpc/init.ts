@@ -5,12 +5,14 @@ import { cache } from "react";
 
 export const createTRPCContext = cache(async () => {
   /**
+   *  Create your context based on the request object.
+   *  Will be available as `ctx` in all your resolvers
    * @see: https://trpc.io/docs/server/context
    */
   return { userId: "user_123" };
 });
 
-const t = initTRPC.create({});
+const t = initTRPC.create();
 
 // Base router and procedure helpers
 export const createTRPCRouter = t.router;

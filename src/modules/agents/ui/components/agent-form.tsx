@@ -42,7 +42,9 @@ export const AgentForm = ({
   const createAgent = useMutation(
     trpc.agents.create.mutationOptions({
       onSuccess: async () => {
-        await queryClient.invalidateQueries(trpc.agents.getMany.queryOptions());
+        await queryClient.invalidateQueries(
+          trpc.agents.getMany.queryOptions({})
+        );
 
         if (initialValues?.id) {
           await queryClient.invalidateQueries(
@@ -75,6 +77,7 @@ export const AgentForm = ({
     if (isEdit) {
       console.log("TODO : Update Agents");
     } else {
+      //The mutation function you can call with variables to trigger the mutation
       createAgent.mutate(values);
     }
   };
