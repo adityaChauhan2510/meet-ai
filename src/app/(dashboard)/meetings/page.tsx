@@ -29,7 +29,7 @@ export default async function Page() {
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Suspense fallback={<MeetingsViewLoading />}>
           <ErrorBoundary fallback={<MeetingsViewError />}>
-            <MeetingsView />;
+            <MeetingsView />
           </ErrorBoundary>
         </Suspense>
       </HydrationBoundary>
