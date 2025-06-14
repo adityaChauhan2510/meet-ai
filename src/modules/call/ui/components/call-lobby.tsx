@@ -81,7 +81,7 @@ export const CallLobby = ({ onJoin }: Props) => {
             </Button>
             <Button onClick={onJoin}>
               <LogInIcon />
-              Join Call
+              <span className="font-bold">Join Call</span>
             </Button>
           </div>
         </div>

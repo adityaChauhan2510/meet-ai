@@ -35,7 +35,7 @@ export const MeetingIdView = ({ meetingId }: Props) => {
 
   const [RemoveConfirmation, confirmRemove] = useConfirm(
     "Are you sure?",
-    "The following action will remove this meeting"
+    "The following action will remove this meeting."
   );
 
   const removeMeeting = useMutation(
@@ -57,11 +57,11 @@ export const MeetingIdView = ({ meetingId }: Props) => {
     await removeMeeting.mutateAsync({ id: meetingId });
   };
 
-  const isActive = data.status === "active";
   const isUpcoming = data.status === "upcoming";
+  const isActive = data.status === "active";
   const isCancelled = data.status === "cancelled";
-  const isCompleted = data.status === "completed";
   const isProcessing = data.status === "processing";
+  const isCompleted = data.status === "completed";
 
   return (
     <>
