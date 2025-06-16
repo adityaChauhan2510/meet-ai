@@ -4,9 +4,7 @@ import type { Channel as StreamChannel } from "stream-chat";
 import {
   Chat,
   Channel,
-  ChannelList,
   Window,
-  ChannelHeader,
   MessageList,
   MessageInput,
   Thread,

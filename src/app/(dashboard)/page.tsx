@@ -1,7 +1,6 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { HomeView } from "@/modules/home/ui/views/home-view";
 
 export default async function Page() {
   const session = await auth.api.getSession({
@@ -11,5 +10,6 @@ export default async function Page() {
   if (!session) {
     redirect("/sign-in");
   }
-  return <HomeView />;
+
+  redirect("/meetings");
 }
