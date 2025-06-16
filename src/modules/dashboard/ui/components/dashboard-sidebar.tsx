@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import path from "path";
 import { DashboardUserButton } from "./dashboard-user-button";
+import { DashboardTrial } from "./dashboard-trial";
 
 const firstSection = [
   {
@@ -117,6 +118,7 @@ export const DashboardSidebar = () => {
       </SidebarContent>
 
       <SidebarFooter className="text-white">
+        <DashboardTrial />
         <DashboardUserButton />
       </SidebarFooter>
     </Sidebar>

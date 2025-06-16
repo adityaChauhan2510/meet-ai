@@ -47,11 +47,17 @@ export const AgentForm = ({
         );
 
         //INVALIDATE FREE TIER USAGE
+        await queryClient.invalidateQueries(
+          trpc.premium.getFreeUsage.queryOptions()
+        );
         onSuccess?.(); //prop passed to this to close the form
       },
       onError: (err) => {
         toast.error(err.message);
-        //TODO : Check if error code is "FORBIDDEN", redirect to '/upgrade'
+        //Check if error code is "FORBIDDEN", redirect to '/upgrade'
+        if (err.data?.code === "FORBIDDEN") {
+          router.push("/upgrade");
+        }
       },
     })
   );
@@ -73,7 +79,6 @@ export const AgentForm = ({
       },
       onError: (err) => {
         toast.error(err.message);
-        //TODO : Check if error code is "FORBIDDEN", redirect to '/upgrade'
       },
     })
   );
