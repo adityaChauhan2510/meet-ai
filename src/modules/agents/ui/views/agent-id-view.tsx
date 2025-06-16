@@ -17,7 +17,6 @@ import { toast } from "sonner";
 import { useConfirm } from "@/hooks/use-confirm";
 import { useState } from "react";
 import { UpdateAgentDialog } from "../components/update-agent-dialog";
-import { set } from "date-fns";
 
 interface Props {
   agentId: string;

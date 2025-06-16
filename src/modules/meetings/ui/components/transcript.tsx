@@ -5,7 +5,6 @@ import { generateAvatarUri } from "@/lib/avatar";
 import { useTRPC } from "@/trpc/client";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
-import { isTemporalInstant } from "inngest/helpers/temporal";
 import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import Highlighter from "react-highlight-words";

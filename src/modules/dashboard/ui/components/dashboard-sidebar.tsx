@@ -17,7 +17,6 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import path from "path";
 import { DashboardUserButton } from "./dashboard-user-button";
 import { DashboardTrial } from "./dashboard-trial";
 
