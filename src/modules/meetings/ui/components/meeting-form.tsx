@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 
 import { CommandSelect } from "@/components/command-select";
 import { GeneratedAvatar } from "@/components/generated-avatar";
-import { Textarea } from "@/components/ui/textarea";
+
 import {
   Form,
   FormControl,
@@ -62,11 +62,17 @@ export const MeetingForm = ({
         );
 
         //INVALIDATE FREE TIER USAGE
+        await queryClient.invalidateQueries(
+          trpc.premium.getFreeUsage.queryOptions()
+        );
         onSuccess?.(data.id); //prop passed to this to close the form
       },
       onError: (err) => {
         toast.error(err.message);
-        //TODO : Check if error code is "FORBIDDEN", redirect to '/upgrade'
+        //Check if error code is "FORBIDDEN", redirect to '/upgrade'
+        if (err.data?.code === "FORBIDDEN") {
+          router.push("/upgrade");
+        }
       },
     })
   );
@@ -88,7 +94,6 @@ export const MeetingForm = ({
       },
       onError: (err) => {
         toast.error(err.message);
-        //TODO : Check if error code is "FORBIDDEN", redirect to '/upgrade'
       },
     })
   );
