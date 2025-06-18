@@ -40,6 +40,8 @@ export const meetingsRouter = createTRPCRouter({
 
     return token;
   }),
+
+  //used for displaying transcript after meeting.
   getTranscript: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(async ({ ctx, input }) => {
@@ -175,7 +177,7 @@ export const meetingsRouter = createTRPCRouter({
       return removedMeeting;
     }),
 
-  //update the meeting
+  //update existing meeting
   update: protectedProcedure
     .input(meetingsUpdateSchema)
     .mutation(async ({ ctx, input }) => {
@@ -197,6 +199,7 @@ export const meetingsRouter = createTRPCRouter({
       return updatedMeeting;
     }),
 
+  //create a new meeting
   create: premiumProcedure("meetings")
     .input(meetingsInsertSchema)
     .mutation(async ({ input, ctx }) => {
@@ -282,7 +285,7 @@ export const meetingsRouter = createTRPCRouter({
       return existingMeeting;
     }),
 
-  //get-many agent
+  //get-many meetings
   getMany: protectedProcedure
     .input(
       z.object({

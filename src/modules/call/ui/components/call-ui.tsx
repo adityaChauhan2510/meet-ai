@@ -20,7 +20,7 @@ export const CallUI = ({ meetingName }: Props) => {
 
   const handleLeave = async () => {
     if (!call) return;
-    call.endCall();
+    await call.endCall();
     setShow("ended");
   };
 
