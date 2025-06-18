@@ -1,5 +1,6 @@
 "use client";
 import { z } from "zod";
+import { motion } from "motion/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { OctagonAlertIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -148,9 +149,21 @@ export const SignInView = () => {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button className="w-full" type="submit" disabled={pending}>
-                  Sign In
-                </Button>
+                <motion.div
+                  whileHover={{
+                    x: [0, -2, 2, -2, 2, 0],
+                    y: [0, -2, 2, -2, 2, 0],
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Button
+                    className="w-full text-md py-5"
+                    type="submit"
+                    disabled={pending}
+                  >
+                    Sign In
+                  </Button>
+                </motion.div>
 
                 <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t ">
                   <span className="bg-card text-muted-foreground relative z-10 px-2">
@@ -193,8 +206,27 @@ export const SignInView = () => {
           </Form>
 
           <div className="bg-radial from-sidebar-accent to-sidebar relative hidden md:flex flex-col gap-y-4 items-center justify-center">
-            <Image src="/logo.svg" alt="image" width={92} height={92} />
-            <p className="text-2xl font-semibold text-white">MEET.AI</p>
+            <motion.div
+              animate={{
+                opacity: 1,
+                rotate: 360,
+                transition: { duration: 2 },
+              }}
+              whileHover={{
+                scale: 1.1,
+                rotate: 180,
+                transition: { duration: 2 },
+              }}
+            >
+              <Image src="/logo.svg" alt="image" width={92} height={92} />
+            </motion.div>
+            <motion.p
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 100, duration: 1.5 }}
+              className="text-2xl p-3 font-semibold text-gray-200"
+            >
+              MEET AI
+            </motion.p>
           </div>
         </CardContent>
       </Card>
